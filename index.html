@@ -392,8 +392,7 @@
     <h2 class="section-title">Results</h2>
     <div class="content">
       <p>
-        Ten image-to-video models on the 100 Core100 tasks, each prompted in four ways, seed 0. Error is
-        the median relative distance between the recovered and the prompted parameter, lower is better.
+        Core100 evaluates ten base models across four prompt formats. The event tables below show Standard and Detailed prompts. Physical parameter errors are median relative errors.
       </p>
     </div>
 
@@ -405,6 +404,50 @@
       <tbody><tr><td>Wan2.2-TI2V-5B</td><td class="num">94.9 %</td><td class="num">130.3 %</td><td class="num">85.8 %</td><td class="num">23.2</td></tr>
 <tr><td>PR-S</td><td class="num">69.1 %</td><td class="num">70.6 %</td><td class="num">45.6 %</td><td class="num">32.1</td></tr>
 <tr><td>PR-D</td><td class="num">69.1 %</td><td class="num">87.6 %</td><td class="num">67.3 %</td><td class="num">32.0</td></tr></tbody></table>
+    </div>
+    <div class="result-block">
+      <h3 class="result-title">Core100 event evaluation</h3>
+      <p class="result-note">Ten base models evaluated with Standard and Detailed prompts. Values are percentages. NearAcc and FarAcc use the 20% distance cutoff. Pair Coverage and VPSR use the fixed 51-pair roster.</p>
+      <div style="overflow-x:auto" tabindex="0" role="region" aria-label="Core100 event evaluation">
+        <table class="table result-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Prompt</th><th scope="col">NearAcc ↑</th><th scope="col">FarAcc ↑</th><th scope="col">PairAcc ↑</th><th scope="col">Pair Coverage ↑</th><th scope="col">VPSR ↑</th></tr></thead>
+          <tbody><tr><th scope="row">CogVideoX-1.5</th><td>Standard</td><td class="num">45.65</td><td class="num">50.00</td><td class="num">0.00</td><td class="num">67.65</td><td class="num">0.00</td></tr>
+<tr><th scope="row">CogVideoX-1.5</th><td>Detailed</td><td class="num">43.48</td><td class="num">54.00</td><td class="num">4.76</td><td class="num">82.35</td><td class="num">3.92</td></tr>
+<tr><th scope="row">Cosmos-Predict2</th><td>Standard</td><td class="num">51.19</td><td class="num">37.18</td><td class="num">7.69</td><td class="num">76.47</td><td class="num">5.88</td></tr>
+<tr><th scope="row">Cosmos-Predict2</th><td>Detailed</td><td class="num">59.99</td><td class="num">46.12</td><td class="num">20.93</td><td class="num">84.31</td><td class="num">17.65</td></tr>
+<tr><th scope="row">Cosmos3-Nano</th><td>Standard</td><td class="num">58.33</td><td class="num">50.57</td><td class="num">12.31</td><td class="num">63.73</td><td class="num">7.84</td></tr>
+<tr><th scope="row">Cosmos3-Nano</th><td>Detailed</td><td class="num">62.17</td><td class="num">45.41</td><td class="num">14.81</td><td class="num">79.41</td><td class="num">11.76</td></tr>
+<tr><th scope="row">HunyuanVideo-1.5</th><td>Standard</td><td class="num">47.67</td><td class="num">49.40</td><td class="num">13.71</td><td class="num">57.19</td><td class="num">7.84</td></tr>
+<tr><th scope="row">HunyuanVideo-1.5</th><td>Detailed</td><td class="num">60.75</td><td class="num">60.60</td><td class="num">12.50</td><td class="num">86.27</td><td class="num">10.78</td></tr>
+<tr><th scope="row">MiniMax-H3</th><td>Standard</td><td class="num">66.98</td><td class="num">52.95</td><td class="num">23.14</td><td class="num">83.33</td><td class="num">19.28</td></tr>
+<tr><th scope="row">MiniMax-H3</th><td>Detailed</td><td class="num">69.63</td><td class="num">60.13</td><td class="num">18.65</td><td class="num">82.35</td><td class="num">15.36</td></tr>
+<tr><th scope="row">PhysAlign</th><td>Standard</td><td class="num">60.04</td><td class="num">60.71</td><td class="num">20.24</td><td class="num">82.35</td><td class="num">16.67</td></tr>
+<tr><th scope="row">PhysAlign</th><td>Detailed</td><td class="num">45.08</td><td class="num">45.74</td><td class="num">11.90</td><td class="num">82.35</td><td class="num">9.80</td></tr>
+<tr><th scope="row">PhysRVG</th><td>Standard</td><td class="num">50.00</td><td class="num">52.27</td><td class="num">0.00</td><td class="num">64.05</td><td class="num">0.00</td></tr>
+<tr><th scope="row">PhysRVG</th><td>Detailed</td><td class="num">50.00</td><td class="num">50.00</td><td class="num">0.00</td><td class="num">66.01</td><td class="num">0.00</td></tr>
+<tr><th scope="row">VideoGPA</th><td>Standard</td><td class="num">54.17</td><td class="num">52.94</td><td class="num">7.23</td><td class="num">54.25</td><td class="num">3.92</td></tr>
+<tr><th scope="row">VideoGPA</th><td>Detailed</td><td class="num">53.21</td><td class="num">56.82</td><td class="num">15.54</td><td class="num">63.07</td><td class="num">9.80</td></tr>
+<tr><th scope="row">Wan2.2-TI2V-5B</th><td>Standard</td><td class="num">35.42</td><td class="num">25.00</td><td class="num">0.00</td><td class="num">36.27</td><td class="num">0.00</td></tr>
+<tr><th scope="row">Wan2.2-TI2V-5B</th><td>Detailed</td><td class="num">40.95</td><td class="num">55.56</td><td class="num">8.33</td><td class="num">70.59</td><td class="num">5.88</td></tr>
+<tr><th scope="row">Wan2.2-I2V-A14B</th><td>Standard</td><td class="num">48.29</td><td class="num">62.82</td><td class="num">30.70</td><td class="num">74.51</td><td class="num">22.88</td></tr>
+<tr><th scope="row">Wan2.2-I2V-A14B</th><td>Detailed</td><td class="num">59.28</td><td class="num">55.41</td><td class="num">42.06</td><td class="num">82.35</td><td class="num">34.64</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="result-block">
+      <h3 class="result-title">Event response after fine-tuning</h3>
+      <p class="result-note">The Wan2.2-TI2V-5B baseline and the two PhysResponse variants use the same scoring protocol. Values are percentages.</p>
+      <div style="overflow-x:auto" tabindex="0" role="region" aria-label="Event response after fine-tuning">
+        <table class="table result-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Prompt</th><th scope="col">NearAcc ↑</th><th scope="col">FarAcc ↑</th><th scope="col">PairAcc ↑</th><th scope="col">Pair Coverage ↑</th><th scope="col">VPSR ↑</th></tr></thead>
+          <tbody><tr><th scope="row">Wan2.2-TI2V-5B</th><td>Standard</td><td class="num">35.42</td><td class="num">25.00</td><td class="num">0.00</td><td class="num">36.27</td><td class="num">0.00</td></tr>
+<tr><th scope="row">Wan2.2-TI2V-5B</th><td>Detailed</td><td class="num">40.95</td><td class="num">55.56</td><td class="num">8.33</td><td class="num">70.59</td><td class="num">5.88</td></tr>
+<tr><th scope="row">PR-S</th><td>Standard</td><td class="num">42.80</td><td class="num">61.00</td><td class="num">14.97</td><td class="num">96.08</td><td class="num">14.38</td></tr>
+<tr><th scope="row">PR-S</th><td>Detailed</td><td class="num">50.38</td><td class="num">60.42</td><td class="num">10.20</td><td class="num">96.08</td><td class="num">9.80</td></tr>
+<tr><th scope="row">PR-D</th><td>Standard</td><td class="num">32.95</td><td class="num">58.00</td><td class="num">14.29</td><td class="num">96.08</td><td class="num">13.73</td></tr>
+<tr><th scope="row">PR-D</th><td>Detailed</td><td class="num">54.73</td><td class="num">60.22</td><td class="num">4.76</td><td class="num">96.08</td><td class="num">4.58</td></tr></tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
