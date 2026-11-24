@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhysResponse — Physics of Video Generation</title>
+<meta name="description" content="PhysResponse evaluates how video generators respond to controlled changes in physical parameters.">
+<style>
+:root{font:16px/1.65 system-ui,sans-serif;color:#17283a;background:#f4f8fa}*{box-sizing:border-box}body{margin:0}main{max-width:1000px;margin:auto;padding:56px 24px 72px}.hero{text-align:center;padding:16px 0 36px}.logo{width:min(360px,83vw);height:auto}h1{font-size:clamp(1.75rem,4.5vw,3rem);line-height:1.15;max-width:820px;margin:16px auto}h2{margin:0 0 .5em}.authors{max-width:790px;margin:18px auto;color:#34495b}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}.actions a,.actions span{display:inline-block;padding:8px 15px;border-radius:8px}.actions a{background:#163c54;color:white;text-decoration:none}.actions span{background:#e4edf2;color:#354b5b}.metrics,.methods{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.stat,article{background:white;border:1px solid #d5e2e9;border-radius:12px;padding:18px}.stat b{display:block;font-size:1.8rem;color:#104d65}.methods{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}section{margin-top:32px}article h3{margin:0 0 8px}article p{margin:0}a{color:#105c77}a:focus-visible{outline:3px solid #1589ac;outline-offset:3px}
+</style></head><body><main>
+<header class="hero"><img class="logo" src="logo.png" alt="PhysResponse">
+<h1>Probing the Physics of Video Generation with Controlled Interventions</h1>
+<p class="authors">
+      Yuhan Li<sup>1,<span class="mark">*</span></sup>,
+      Shuran Zhang<sup>1,<span class="mark">*</span></sup>,
+      Haixin Tian<sup>1</sup>, Baonuo Rao<sup>1</sup>, Weipeng Li<sup>1</sup>,
+      Yujia Hou<sup>1</sup>, Zhenyu Wang<sup>1</sup>, Zijun Wang<sup>1</sup>,
+      Luoyang Lin<sup>1</sup>, Lijing Luo<sup>1</sup>, Jiehui Huang<sup>2</sup>,
+      Kaiyuan Yang<sup>1</sup>, Jingbin Tan<sup>1</sup>,
+      Panwen Hu<sup>3,<span class="mark">†</span></sup>,
+      Xiaodan Liang<sup>1,<span class="mark">†</span></sup>
+    </p>
+<div class="actions"><a href="https://arxiv.org/abs/2611.24419">Paper on arXiv</a><span>Code · release pending</span><span>Data · release pending</span></div></header>
+<div class="metrics"><div class="stat"><b>72,000</b>simulated videos</div><div class="stat"><b>20</b>interaction types</div><div class="stat"><b>4,000</b>Core100 base-model generations</div><div class="stat"><b>51</b>registered video pairs across 18 Core100 scenes</div></div>
+<section><h2>What PhysResponse measures</h2><p>PhysResponse tests how generated motion changes when gravity, friction, or initial speed is varied under controlled conditions.</p>
+<div class="methods"><article><h3>Recovering physical parameters</h3><p>Scene-conditioned simulator inversion estimates the effective gravity, friction, and initial speed behind generated motion.</p></article><article><h3>Scoring event outcomes</h3><p>Near- and far-boundary events are scored separately. For a registered pair, both generated endpoints must match their own reference outcomes for the event to count as a success.</p></article></div></section>
+</main></body></html>
