@@ -1,13 +1,50 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PhysResponse — Physics of Video Generation</title>
-<meta name="description" content="PhysResponse evaluates how video generators respond to controlled changes in physical parameters.">
-<style>
-:root{font:16px/1.65 system-ui,sans-serif;color:#17283a;background:#f4f8fa}*{box-sizing:border-box}body{margin:0}main{max-width:1000px;margin:auto;padding:56px 24px 72px}.hero{text-align:center;padding:16px 0 36px}.logo{width:min(360px,83vw);height:auto}h1{font-size:clamp(1.75rem,4.5vw,3rem);line-height:1.15;max-width:820px;margin:16px auto}h2{margin:0 0 .5em}.authors{max-width:790px;margin:18px auto;color:#34495b}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}.actions a,.actions span{display:inline-block;padding:8px 15px;border-radius:8px}.actions a{background:#163c54;color:white;text-decoration:none}.actions span{background:#e4edf2;color:#354b5b}.metrics,.methods{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.stat,article{background:white;border:1px solid #d5e2e9;border-radius:12px;padding:18px}.stat b{display:block;font-size:1.8rem;color:#104d65}.methods{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}section{margin-top:32px}article h3{margin:0 0 8px}article p{margin:0}a{color:#105c77}a:focus-visible{outline:3px solid #1589ac;outline-offset:3px}
-</style></head><body><main>
-<header class="hero"><img class="logo" src="logo.png" alt="PhysResponse">
-<h1>Probing the Physics of Video Generation with Controlled Interventions</h1>
-<p class="authors">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhysResponse: Probing the Physics of Video Generation with Controlled Interventions</title>
+<meta name="description" content="PhysResponse is a 72,000-video dataset and benchmark that recovers gravity, friction and initial speed from generated videos by inverting the simulator, and tests event outcomes near and across critical transitions.">
+<meta property="og:title" content="PhysResponse">
+<meta property="og:description" content="A benchmark and 72K-video dataset for physical parameter responsiveness in video generation.">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top" aria-label="PhysResponse, back to top"><img src="assets/img/physresponse-logo.png" alt="PhysResponse" height="30"></a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#dataset">Dataset</a>
+      <a href="#benchmark">Benchmark</a>
+      <a href="#qualitative">Qualitative</a>
+      <a href="#results">Results</a>
+      <a href="#resources">Resources</a>
+      <a href="#citation">Citation</a>
+    </div>
+    <span class="button is-dark" aria-disabled="true"><svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+    </span>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <p class="venue"><a href="https://arxiv.org/abs/2611.24419" target="_blank" rel="noopener">arXiv:2611.24419 · 2026</a></p>
+    <h1 class="publication-title">
+      <img src="assets/img/physresponse-logo.png"
+           alt="PhysResponse: Probing the Physics of Video Generation with Controlled Interventions"
+           width="1500" height="434">
+    </h1>
+    <p class="publication-subtitle">Probing the Physics of Video Generation with Controlled Interventions</p>
+
+    <div class="logos">
+      <a href="https://www.sysu.edu.cn/" title="Sun Yat-sen University"><img src="assets/img/logos/sysu.png" alt="Sun Yat-sen University" height="58"></a>
+      <a href="https://mbzuai.ac.ae/" title="Mohamed bin Zayed University of Artificial Intelligence"><img src="assets/img/logos/mbzuai.png" alt="MBZUAI" height="58"></a>
+      <a href="https://hkust.edu.hk/" title="The Hong Kong University of Science and Technology"><img src="assets/img/logos/hkust.png" alt="HKUST" height="58"></a>
+    </div>
+    <p class="authors">
       Yuhan Li<sup>1,<span class="mark">*</span></sup>,
       Shuran Zhang<sup>1,<span class="mark">*</span></sup>,
       Haixin Tian<sup>1</sup>, Baonuo Rao<sup>1</sup>, Weipeng Li<sup>1</sup>,
@@ -17,8 +54,428 @@
       Panwen Hu<sup>3,<span class="mark">†</span></sup>,
       Xiaodan Liang<sup>1,<span class="mark">†</span></sup>
     </p>
-<div class="actions"><a href="https://arxiv.org/abs/2611.24419">Paper on arXiv</a><span>Code · release pending</span><span>Data · release pending</span></div></header>
-<div class="metrics"><div class="stat"><b>72,000</b>simulated videos</div><div class="stat"><b>20</b>interaction types</div><div class="stat"><b>4,000</b>Core100 base-model generations</div><div class="stat"><b>51</b>registered video pairs across 18 Core100 scenes</div></div>
-<section><h2>What PhysResponse measures</h2><p>PhysResponse tests how generated motion changes when gravity, friction, or initial speed is varied under controlled conditions.</p>
-<div class="methods"><article><h3>Recovering physical parameters</h3><p>Scene-conditioned simulator inversion estimates the effective gravity, friction, and initial speed behind generated motion.</p></article><article><h3>Scoring event outcomes</h3><p>Near- and far-boundary events are scored separately. For a registered pair, both generated endpoints must match their own reference outcomes for the event to count as a success.</p></article></div></section>
-</main></body></html>
+
+    <p class="affiliations">
+      <sup>1</sup>Sun Yat-sen University &nbsp;·&nbsp;
+      <sup>2</sup>The Hong Kong University of Science and Technology &nbsp;·&nbsp;
+      <sup>3</sup>Mohamed bin Zayed University of Artificial Intelligence
+    </p>
+
+    <p class="contribution"><sup class="mark">*</sup>Equal contribution. &nbsp;<sup class="mark">†</sup>Corresponding authors.</p>
+
+    <div class="link-block">
+      <a class="button is-dark" href="https://arxiv.org/abs/2611.24419" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6.5 3h7l4.5 4.5V21h-11.5z"/><path d="M13.5 3v4.5H18"/><path d="M9.5 12.5h5M9.5 16h5"/>
+        </svg>
+        <span>arXiv</span>
+      </a>
+      <span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span>Code · release pending</span>
+      </span>
+      <span class="button is-dark" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <ellipse cx="12" cy="5.5" rx="7" ry="3"/><path d="M5 5.5v13c0 1.66 3.13 3 7 3s7-1.34 7-3v-13"/><path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3"/>
+        </svg>
+        <span>Data · release pending</span>
+      </span>
+      <a class="button is-dark" href="#results">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 20h18"/><path d="M6.5 20v-6M11 20V7.5M15.5 20v-8.5M20 20V4.5"/>
+        </svg>
+        <span>Benchmark</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="container teaser">
+    <figure class="teaser-figure">
+      <img src="assets/img/teaser_poster.jpg"
+           alt="Four interaction families — inclined surfaces, collision-mediated transfer, changes of support and multi-stage cascades — each with its prompt excerpt, around the PhysResponse wordmark tiled from dataset frames."
+           width="2403" height="1500">
+      <figcaption>
+        Controlled interventions across four of the 20 interaction types, each with the prompt excerpt
+        that states its physics; the wordmark is tiled from dataset frames. A generated video can look
+        right and still ignore those conditions — PhysResponse measures the physics it actually shows.
+      </figcaption>
+    </figure>
+
+  </div>
+</header>
+
+<!-- ───────────────────────────── overview ───────────────────────────── -->
+<section class="section" id="overview">
+  <div class="container narrow">
+    <h2 class="section-title">Overview</h2>
+    <div class="content">
+      <p>
+        Video generation models are increasingly viewed as world simulators, which requires not only
+        plausible motion but dynamics that respond correctly to specified physical parameters. Existing
+        benchmarks largely target perceptual plausibility, leaving this <em>physical parameter
+        responsiveness</em> insufficiently explored. A model that renders a beautiful tabletop and then
+        ignores gravity can still score well.
+      </p>
+      <p>
+        PhysResponse measures the gap at two levels. <strong>Scene-conditioned simulator
+        inversion</strong> recovers the effective gravity, friction and initial speed of a generated
+        video: every clip starts from a known simulated scene, so we replay that exact scene at many
+        parameter values and keep the values whose rendered boxes match the tracked boxes.
+        <strong>Event evaluation</strong> then tests the outcomes, near and across the critical
+        transitions where a small change of a parameter flips what happens.
+      </p>
+    </div>
+
+    <div class="content bullets">
+      <ul>
+        <li>
+          <strong class="bullet-title">The two levels fail independently.</strong>
+          A video can be visually stable and physically wrong, or follow the parameter while breaking
+          the event chain. A still frame scores <strong>37.8 dB</strong> PSNR, higher than all ten
+          evaluated models (21.0–31.0 dB); a physically correct video shows 3.6 % gravity error against
+          73.5–140.3 % for the models.
+        </li>
+        <li>
+          <strong class="bullet-title">Ground-truth parameters are exact.</strong>
+          Inputs come from a simulator, so the true g, μ and v are known for every reference, and every
+          video is scored on the same task, prompt and physical clock.
+        </li>
+        <li>
+          <strong class="bullet-title">Inversion explains more than a curve fit.</strong>
+          On reference videos with known parameters, inversion reaches 3.0 %, 7.0 % and 1.4 % error on
+          g, μ and v; image-plane fitting and monocular depth lifting explain free flight only, with
+          coverage below 8 %.
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ───────────────────────────── dataset ───────────────────────────── -->
+<section class="section section-alt" id="dataset">
+  <div class="container narrow">
+    <h2 class="section-title">Dataset</h2>
+    <div class="content">
+      <p>
+        72,000 simulated videos of 20 multi-object interaction types, with the physical conditions under
+        control and every scene replayed from its own state trace.
+      </p>
+    </div>
+
+    <div class="stats4">
+      <div class="stat">
+        <div class="n" data-count="72000">72,000</div>
+        <div class="k">Simulation videos</div>
+        <div class="s">24,000 runs × 3 synchronized views</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-count="20">20</div>
+        <div class="k">Interaction types</div>
+        <div class="s">tabletop physical events</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-count="24000">24,000</div>
+        <div class="k">Simulation runs</div>
+        <div class="s">each rendered from three cameras</div>
+      </div>
+      <div class="stat">
+        <div class="n" data-count="288000">288,000</div>
+        <div class="k">Prompt records</div>
+        <div class="s">4 per video: short, concat, standard, detailed</div>
+      </div>
+    </div>
+
+    <div class="engine">
+      <div class="engine-bar">
+        <span class="genesis" style="width:73.3%"></span>
+        <span class="isaac" style="width:26.7%"></span>
+      </div>
+      <div class="engine-legend">
+        <span><b>Genesis</b> — 52,800 videos — 73.3%</span>
+        <span><b>Isaac Sim</b> — 19,200 videos — 26.7%</span>
+      </div>
+    </div>
+
+    <div class="identity">
+      <span><code>24,000 runs × 3 views = 72,000 videos</code></span>
+      <span><code>72,000 videos × 4 prompts = 288,000 prompt records</code></span>
+      <span><code>52,800 Genesis + 19,200 Isaac Sim = 72,000 videos</code></span>
+    </div>
+
+    <div class="content" style="margin-top: 1.6rem">
+      <p>
+        Each scene type holds 2,640 Genesis records and 960 Isaac records across four backgrounds, five
+        gravity levels and three camera views. The 20 types cover motion on a ramp, off-centre
+        collisions, pulling out a support, stacked books, domino propagation and relays between several
+        objects. Full catalogue:
+        <span>docs/DATASET_INTRODUCTION.md</span>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── benchmark ───────────────────────────── -->
+<section class="section" id="benchmark">
+  <div class="container narrow">
+    <h2 class="section-title">Benchmark</h2>
+    <div class="content">
+      <p>
+        Physical responsiveness is measured at two levels, because a model can be visually stable and
+        physically wrong, or follow a parameter while breaking the event chain.
+      </p>
+    </div>
+
+    <div class="two-col">
+      <article class="panel param">
+        <span class="tag">Level 1</span>
+        <h3>Parameter level</h3>
+        <p>
+          Tracking → conditional simulator inversion → effective parameters. Given the tracked boxes and
+          the task's own scene, we replay that scene at many parameter values and keep the ones whose
+          rendered boxes match the video.
+        </p>
+        <p>
+          The result is the <em>effective</em> gravity <b>g</b>, friction <b>μ</b> and initial speed
+          <b>v</b> of the generated motion, with the other conditions held at their prompted values — a
+          conditional estimate, not an identification of every parameter from one trajectory.
+        </p>
+      </article>
+
+      <article class="panel event">
+        <span class="tag">Level 2</span>
+        <h3>Event level</h3>
+        <p>
+          Reference events → generated events → outcome scoring. A per-event reading of the video: did
+          the cascade arrive, did the second contact happen, in what order. Each registered pair has unit weight, shared equally among its targets. A target is correct when both endpoints match their own reference outcomes.
+        </p>
+        <p>
+          <b>Critical transitions</b> are the stress test of this level: samples placed at known
+          distances on both sides of a verified boundary, where one outcome flips into another.
+        </p>
+      </article>
+    </div>
+
+    <div class="eval-grid">
+      <div class="eval"><b>100</b><span>Core100 cases<br>80 in-distribution · 20 OOD</span></div>
+      <div class="eval"><b>10</b><span>image-to-video models evaluated</span></div>
+      <div class="eval"><b>4</b><span>evaluation prompt formats<br>Short · Standard · Detailed · Concat</span></div>
+      <div class="eval"><b>4,000</b><span>generated evaluation videos<br>10 × 100 × 4, seed 0</span></div>
+    </div>
+    <p class="footnote">
+      The 80 reserve cases sit outside the 100: they are held for replacement and are never scored,
+      so they are not a third out-of-distribution group. The event evaluation uses 51 registered video pairs across 18 Core100 scenes.
+    </p>
+
+
+  </div>
+</section>
+<!-- ───────────────────────────── qualitative ───────────────────────────── -->
+<section class="section section-alt" id="qualitative">
+  <div class="container">
+    <h2 class="section-title">Qualitative examples</h2>
+    <div class="container narrow">
+      <div class="content">
+        <p>
+          Book dominoes (T06) at three gravity levels. One row per condition, one column per time step
+          measured from the conditioning frame; every row advances on the same clock, so only the
+          conditions differ between rows.
+        </p>
+      </div>
+    </div>
+
+    <figure class="strip" data-strip>
+      <div class="strip-head" aria-hidden="true">
+        <span class="row-label"></span>
+        <span class="time is-active">1.00 s</span>
+        <span class="time">1.50 s</span>
+        <span class="time">2.00 s</span>
+        <span class="time">2.50 s</span>
+      </div>
+      <div class="strip-row">
+        <span class="row-label">g = 1.62 m/s²</span>
+        <img data-case="T06_C01" data-frame="1" src="assets/img/strip/T06_C01_reference_1.00.jpg" alt="Gravity 1.62, frame at 1.00 s">
+        <img data-case="T06_C01" data-frame="2" src="assets/img/strip/T06_C01_reference_1.50.jpg" alt="Gravity 1.62, frame at 1.50 s">
+        <img data-case="T06_C01" data-frame="3" src="assets/img/strip/T06_C01_reference_2.00.jpg" alt="Gravity 1.62, frame at 2.00 s">
+        <img data-case="T06_C01" data-frame="4" src="assets/img/strip/T06_C01_reference_2.50.jpg" alt="Gravity 1.62, frame at 2.50 s">
+      </div>
+      <div class="strip-row">
+        <span class="row-label">g = 3.71 m/s²</span>
+        <img data-case="T06_C02" data-frame="1" src="assets/img/strip/T06_C02_reference_1.00.jpg" alt="Gravity 3.71, frame at 1.00 s">
+        <img data-case="T06_C02" data-frame="2" src="assets/img/strip/T06_C02_reference_1.50.jpg" alt="Gravity 3.71, frame at 1.50 s">
+        <img data-case="T06_C02" data-frame="3" src="assets/img/strip/T06_C02_reference_2.00.jpg" alt="Gravity 3.71, frame at 2.00 s">
+        <img data-case="T06_C02" data-frame="4" src="assets/img/strip/T06_C02_reference_2.50.jpg" alt="Gravity 3.71, frame at 2.50 s">
+      </div>
+      <div class="strip-row">
+        <span class="row-label">g = 9.81 m/s²</span>
+        <img data-case="T06_C05" data-frame="1" src="assets/img/strip/T06_C05_reference_1.00.jpg" alt="Gravity 9.81, frame at 1.00 s">
+        <img data-case="T06_C05" data-frame="2" src="assets/img/strip/T06_C05_reference_1.50.jpg" alt="Gravity 9.81, frame at 1.50 s">
+        <img data-case="T06_C05" data-frame="3" src="assets/img/strip/T06_C05_reference_2.00.jpg" alt="Gravity 9.81, frame at 2.00 s">
+        <img data-case="T06_C05" data-frame="4" src="assets/img/strip/T06_C05_reference_2.50.jpg" alt="Gravity 9.81, frame at 2.50 s">
+      </div>
+      <figcaption>
+        Book dominoes at three gravity levels — 1.62, 3.71 and 9.81 m/s², the Moon, Mars and Earth
+        ranges of the dataset — sampled at the same four times from the conditioning frame. Same
+        camera, same scene, only the physical conditions differ.
+      </figcaption>
+    </figure>
+    <figure class="keyframes">
+      <div class="kf-grid">
+        <figure>
+          <img src="assets/img/cases/T06_C02/generated_4.jpg" alt="Generated continuation at gravity 3.71, late frame">
+          <figcaption>Generated · g = 3.71 m/s²</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/cases/T06_C05/generated_4.jpg" alt="Generated continuation at gravity 9.81, late frame">
+          <figcaption>Generated · g = 9.81 m/s²</figcaption>
+        </figure>
+      </div>
+      <figcaption>
+        The model's own continuation at two of the three levels. The cascade arrives in both; whether
+        the pile ends the way the simulation does is what the benchmark measures, not what the eye
+        notices.
+      </figcaption>
+    </figure>
+
+    <div class="container narrow">
+      <div class="content spaced">
+        <h3>Across a critical boundary</h3>
+        <p>
+          Task T09, a stack of books under two gravity levels. The upper target book stays on the stack
+          at 3.71 m/s² and lands on the table at 9.81 m/s². The transition is the measurement: a model
+          that produces the same outcome at both ends has not responded to gravity, whatever the video
+          looks like.
+        </p>
+      </div>
+      <figure class="figure">
+        <img src="assets/img/boundary/t09_boundary.jpg" alt="Book-stack outcome under two gravity levels">
+        <figcaption>
+          Reference frames of the two conditions with the verified boundary on the gravity axis
+          (T09_C02 / T09_C03, Core100).
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── usage ───────────────────────────── -->
+<section class="section" id="usage">
+  <div class="container narrow">
+    <h2 class="section-title">Getting started</h2>
+    <div class="content">
+      <p>
+        The package builds the generation manifest, tracks every moving object, compensates the camera,
+        inverts the simulator and writes the model's row of the main table. A step whose output already
+        exists is skipped, so an interrupted run resumes where it stopped.
+      </p>
+    </div>
+
+    <p>Code, benchmark downloads, and installation instructions will be linked here when released.</p>
+  </div>
+</section>
+
+<!-- ───────────────────────────── results ───────────────────────────── -->
+<section class="section section-alt" id="results">
+  <div class="container narrow">
+    <h2 class="section-title">Results</h2>
+    <div class="content">
+      <p>
+        Ten image-to-video models on the 100 Core100 tasks, each prompted in four ways, seed 0. Error is
+        the median relative distance between the recovered and the prompted parameter, lower is better.
+      </p>
+    </div>
+
+    <div class="result-block">
+      <h3 class="result-title">Physical parameter errors after fine-tuning</h3>
+      <p class="result-note">The base model and the two PhysResponse variants on the same 100 cases.</p>
+      <table class="table result-table">
+      <thead><tr><th>Model</th><th class="num">g error ↓</th><th class="num">μ error ↓</th><th class="num">v error ↓</th><th class="num">PSNR ↑</th></tr></thead>
+      <tbody><tr><td>Wan2.2-TI2V-5B</td><td class="num">94.9 %</td><td class="num">130.3 %</td><td class="num">85.8 %</td><td class="num">23.2</td></tr>
+<tr><td>PR-S</td><td class="num">69.1 %</td><td class="num">70.6 %</td><td class="num">45.6 %</td><td class="num">32.1</td></tr>
+<tr><td>PR-D</td><td class="num">69.1 %</td><td class="num">87.6 %</td><td class="num">67.3 %</td><td class="num">32.0</td></tr></tbody></table>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────────── resources ───────────────────────────── -->
+<section class="section section-alt" id="resources">
+  <div class="container narrow">
+    <h2 class="section-title">Resources</h2>
+    <table class="table">
+      <thead>
+        <tr><th>Resource</th><th>Status</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span>phy2/phydataset</span></td>
+          <td>release in preparation</td>
+          <td>72K simulated videos, state traces, conditions, prompts</td>
+        </tr>
+        <tr>
+          <td><span>PhyResponse</span></td>
+          <td>release in preparation</td>
+          <td>four-condition prompts of the reference videos</td>
+        </tr>
+        <tr>
+          <td><span>PhyResponse-Generations</span></td>
+          <td>release in preparation</td>
+          <td>generated videos of the ten models on Core100</td>
+        </tr>
+        <tr>
+          <td><a href="https://arxiv.org/pdf/2611.24419">arXiv PDF</a></td>
+          <td>available</td>
+          <td>the paper</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="footnote">
+      The dataset repositories are private while the release is prepared; download links will be added when the resources are released.
+    </p>
+  </div>
+</section>
+<!-- ───────────────────────────── citation ───────────────────────────── -->
+<section class="section" id="citation">
+  <div class="container narrow">
+    <h2 class="section-title">Citation</h2>
+    <div class="bibtex">
+      <button class="copy-btn" data-copy="#bibtex">Copy</button>
+<pre id="bibtex"><code>@article{li2026physresponse,
+  title   = {PhysResponse: Probing the Physics of Video Generation
+             with Controlled Interventions},
+  author  = {Li, Yuhan and Zhang, Shuran and Tian, Haixin and Rao, Baonuo
+             and Li, Weipeng and Hou, Yujia and Wang, Zhenyu and Wang, Zijun
+             and Lin, Luoyang and Luo, Lijing and Huang, Jiehui and Yang, Kaiyuan
+             and Tan, Jingbin and Hu, Panwen and Liang, Xiaodan},
+  journal      = {arXiv preprint arXiv:2611.24419},
+  eprint       = {2611.24419},
+  archivePrefix = {arXiv},
+  url          = {https://arxiv.org/abs/2611.24419},
+  year         = {2026}
+}</code></pre>
+    </div>
+    <p class="footnote">
+      The paper is on <a href="https://arxiv.org/abs/2611.24419" target="_blank" rel="noopener">arXiv:2611.24419</a>;
+      the same record is in
+      <span>CITATION.cff</span>.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>
+      Code is licensed under the
+      <span>MIT License</span>.
+      Videos, prompts and manifests follow the dataset card of the release they come from.
+    </p>
+    <p class="footer-meta">
+      <a href="#top">Back to top</a>
+    </p>
+  </div>
+</footer>
+
+<button class="to-top" data-to-top aria-label="Back to top">↑</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
