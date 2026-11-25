@@ -439,12 +439,12 @@
 
     <div class="result-block">
       <h3 class="result-title">Physical parameter errors after fine-tuning</h3>
-      <p class="result-note">The base model and the two PhysResponse variants on the same 100 cases.</p>
+      <p class="result-note">The base model and the two PhysResponse variants on the same 100 cases. Lower parameter errors and higher PSNR rank better. <strong>Bold</strong> marks the best value and <u>underline</u> the second-best distinct value, including ties.</p>
       <table class="table result-table">
       <thead><tr><th>Model</th><th class="num">g error ↓</th><th class="num">μ error ↓</th><th class="num">v error ↓</th><th class="num">PSNR ↑</th></tr></thead>
-      <tbody><tr><td>Wan2.2-TI2V-5B</td><td class="num">94.9 %</td><td class="num">130.3 %</td><td class="num">85.8 %</td><td class="num">23.2</td></tr>
-<tr><td>PR-S</td><td class="num">69.1 %</td><td class="num">70.6 %</td><td class="num">45.6 %</td><td class="num">32.1</td></tr>
-<tr><td>PR-D</td><td class="num">69.1 %</td><td class="num">87.6 %</td><td class="num">67.3 %</td><td class="num">32.0</td></tr></tbody></table>
+      <tbody><tr><td>Wan2.2-TI2V-5B</td><td class="num"><u>94.9 %</u></td><td class="num">130.3 %</td><td class="num">85.8 %</td><td class="num">23.2</td></tr>
+<tr><td>PR-S</td><td class="num"><strong>69.1 %</strong></td><td class="num"><strong>70.6 %</strong></td><td class="num"><strong>45.6 %</strong></td><td class="num"><strong>32.1</strong></td></tr>
+<tr><td>PR-D</td><td class="num"><strong>69.1 %</strong></td><td class="num"><u>87.6 %</u></td><td class="num"><u>67.3 %</u></td><td class="num"><u>32.0</u></td></tr></tbody></table>
     </div>
     <div class="result-block">
       <h3 class="result-title">Core100 event evaluation</h3>
@@ -477,16 +477,16 @@
     </div>
     <div class="result-block">
       <h3 class="result-title">Event response after fine-tuning</h3>
-      <p class="result-note">The Wan2.2-TI2V-5B baseline and the two PhysResponse variants use the same scoring protocol. Values are percentages.</p>
+      <p class="result-note">The Wan2.2-TI2V-5B baseline and the two PhysResponse variants use the same scoring protocol. Values are percentages. Models are ranked separately for Standard and Detailed prompts. <strong>Bold</strong> marks the best value and <u>underline</u> the second-best distinct value, including ties.</p>
       <div style="overflow-x:auto" tabindex="0" role="region" aria-label="Event response after fine-tuning">
         <table class="table result-table">
           <thead><tr><th scope="col">Model</th><th scope="col">Prompt</th><th scope="col">NearAcc ↑</th><th scope="col">FarAcc ↑</th><th scope="col">PairAcc ↑</th><th scope="col">Pair Coverage ↑</th><th scope="col">VPSR ↑</th></tr></thead>
-          <tbody><tr><th scope="row">Wan2.2-TI2V-5B</th><td>Standard</td><td class="num">35.42</td><td class="num">25.00</td><td class="num">0.00</td><td class="num">36.27</td><td class="num">0.00</td></tr>
-<tr><th scope="row">Wan2.2-TI2V-5B</th><td>Detailed</td><td class="num">40.95</td><td class="num">55.56</td><td class="num">8.33</td><td class="num">70.59</td><td class="num">5.88</td></tr>
-<tr><th scope="row">PR-S</th><td>Standard</td><td class="num">42.80</td><td class="num">61.00</td><td class="num">14.97</td><td class="num">96.08</td><td class="num">14.38</td></tr>
-<tr><th scope="row">PR-S</th><td>Detailed</td><td class="num">50.38</td><td class="num">60.42</td><td class="num">10.20</td><td class="num">96.08</td><td class="num">9.80</td></tr>
-<tr><th scope="row">PR-D</th><td>Standard</td><td class="num">32.95</td><td class="num">58.00</td><td class="num">14.29</td><td class="num">96.08</td><td class="num">13.73</td></tr>
-<tr><th scope="row">PR-D</th><td>Detailed</td><td class="num">54.73</td><td class="num">60.22</td><td class="num">4.76</td><td class="num">96.08</td><td class="num">4.58</td></tr></tbody>
+          <tbody><tr><th scope="row">Wan2.2-TI2V-5B</th><td>Standard</td><td class="num"><u>35.42</u></td><td class="num">25.00</td><td class="num">0.00</td><td class="num"><u>36.27</u></td><td class="num">0.00</td></tr>
+<tr><th scope="row">Wan2.2-TI2V-5B</th><td>Detailed</td><td class="num">40.95</td><td class="num">55.56</td><td class="num"><u>8.33</u></td><td class="num"><u>70.59</u></td><td class="num"><u>5.88</u></td></tr>
+<tr><th scope="row">PR-S</th><td>Standard</td><td class="num"><strong>42.80</strong></td><td class="num"><strong>61.00</strong></td><td class="num"><strong>14.97</strong></td><td class="num"><strong>96.08</strong></td><td class="num"><strong>14.38</strong></td></tr>
+<tr><th scope="row">PR-S</th><td>Detailed</td><td class="num"><u>50.38</u></td><td class="num"><strong>60.42</strong></td><td class="num"><strong>10.20</strong></td><td class="num"><strong>96.08</strong></td><td class="num"><strong>9.80</strong></td></tr>
+<tr><th scope="row">PR-D</th><td>Standard</td><td class="num">32.95</td><td class="num"><u>58.00</u></td><td class="num"><u>14.29</u></td><td class="num"><strong>96.08</strong></td><td class="num"><u>13.73</u></td></tr>
+<tr><th scope="row">PR-D</th><td>Detailed</td><td class="num"><strong>54.73</strong></td><td class="num"><u>60.22</u></td><td class="num">4.76</td><td class="num"><strong>96.08</strong></td><td class="num">4.58</td></tr></tbody>
         </table>
       </div>
     </div>
