@@ -104,12 +104,12 @@ sup { font-size: .7em; color: var(--text-muted); }
 }
 .publication-subtitle {
   margin: 0 auto 1.6rem;
-  max-width: 1000px;
-  font-size: clamp(1.35rem, 2.7vw, 2rem);
+  max-width: 36ch;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
   text-wrap: balance;
-  font-weight: 600;
-  letter-spacing: -.015em;
-  line-height: 1.38;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1.14;
   color: #000;
 }
 
@@ -497,7 +497,7 @@ pre code { font-family: inherit; }
   .hero { padding: 2.4rem 0 2.2rem; }
   .wide-only { display: none; }
   .publication-title img { width: min(280px, 72%); }
-  .publication-subtitle { font-size: 1.3rem; line-height: 1.35; }
+  .publication-subtitle { font-size: clamp(1.4rem, 4.7vw, 1.8rem); line-height: 1.2; }
   .section { padding: 2.6rem 0; }
   .players { grid-template-columns: 1fr; gap: .9rem; }
   .kf-grid { grid-template-columns: 1fr; }
