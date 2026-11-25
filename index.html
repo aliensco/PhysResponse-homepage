@@ -111,7 +111,7 @@
 </svg>
         <span>Dataset</span>
       </a>
-      <a class="button is-dark" href="https://github.com/aliensco/PhysResponse#star-button" aria-label="Open the PhysResponse Star button on GitHub" title="Sign in to GitHub and click Star">
+      <a class="button is-dark" href="https://github.com/aliensco/PhysResponse#star-button" data-star-backend="https://label.yeegoods.cn/physresponse-star/" aria-label="Star PhysResponse on GitHub">
         <span aria-hidden="true">☆</span><span>Star on GitHub</span>
       </a>
       <a class="button is-dark" href="#results">
@@ -121,6 +121,7 @@
         <span>Benchmark</span>
       </a>
     </div>
+    <p><a href="https://label.yeegoods.cn/physresponse-star/authorize">Enable one-click Star</a></p>
   </div>
 
   <section class="container teaser" id="video" aria-labelledby="video-title">
@@ -554,5 +555,32 @@
 <button class="to-top" data-to-top aria-label="Back to top">↑</button>
 
 <script src="assets/js/main.js"></script>
+<script>
+(() => {
+  const link = document.querySelector("[data-star-backend]");
+  if (!link) return;
+  const backend = new URL(link.dataset.starBackend);
+
+  link.addEventListener("click", async (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
+        event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    try {
+      const response = await fetch(new URL("health", backend), {
+        signal: AbortSignal.timeout(1800),
+        cache: "no-store",
+      });
+      if (response.ok && (await response.json()).service === "physresponse-star") {
+        window.location.assign(new URL("star", backend));
+        return;
+      }
+    } catch {
+      // Use the native GitHub link if the authorization service is unavailable.
+    }
+    window.location.assign(link.href);
+  });
+})();
+</script>
 </body>
 </html>
