@@ -5,6 +5,20 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const film = document.querySelector("#video video");
+  const filmAction = document.querySelector("[data-film-action]");
+  if (film && filmAction) {
+    const startFilm = () => film.play().catch((error) => {
+      if (error.name === "NotAllowedError" && film.paused) filmAction.hidden = false;
+    });
+    film.addEventListener("playing", () => { filmAction.hidden = true; });
+    filmAction.querySelector("button").addEventListener("click", () => {
+      startFilm();
+      film.scrollIntoView({ block: "center" });
+    });
+    startFilm();
+  }
+
   /* entrance motion + count-up numbers ---------------------------------- */
   const fmt = (n) => n.toLocaleString("en-US");
   const counters = Array.from(document.querySelectorAll("[data-count]"));
